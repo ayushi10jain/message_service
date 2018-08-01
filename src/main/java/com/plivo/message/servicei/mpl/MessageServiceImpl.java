@@ -87,7 +87,7 @@ public class MessageServiceImpl implements MessageService {
 		}
 
 		setRateLimit(from);
-
+       saveDataToDB(new Message(from,to,text));
 		return new Response("valid input", "sms sent");
 
 	}
@@ -122,5 +122,6 @@ public class MessageServiceImpl implements MessageService {
 			 template.opsForValue().set(from,value+":"+count);
 			 template.expire(from, 5, TimeUnit.MINUTES);
 		}
+		
 	}
 }
